@@ -11,10 +11,7 @@ package minderengine;
  *
  */
 public abstract class Wrapper {
-  private UIMetadata uiMetadata;
-
   public Wrapper(){
-    this.uiMetadata = new UIMetadata();
   }
   
   /**
@@ -44,7 +41,7 @@ public abstract class Wrapper {
    * Returns the information about the design time UI.
    * @return
    */
-  public UIMetadata getMetadata(){
-    return uiMetadata;
+  public String getLabel(){
+    return "Wrapper";
   }
 }

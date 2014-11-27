@@ -10,7 +10,7 @@ public class MethodContainer {
     this.methodKey = generateMethodKey(method);
     this.method = method;
   }
-
+  
   public static String generateMethodKey(Method method) {
     StringBuilder sb = new StringBuilder();
     
@@ -22,6 +22,6 @@ public class MethodContainer {
     
     sb.deleteCharAt(sb.length()-1);
     sb.append(')');
-    return null;
+    return sb.toString();
   }
 }

@@ -4,16 +4,16 @@ name := "minder-common"
 
 version := "0.0.1"
 
+resolvers += "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
+
 resolvers += "Eid public repository" at "http://eidrepo:8081/nexus/content/groups/public/"
 
 resolvers += Resolver.mavenLocal
 
-scalaVersion := "2.11.2"
+javacOptions in (Compile, compile) ++= Seq("-source", "1.7", "-target", "1.7")
+
+javacOptions in (doc) ++= Seq("-source", "1.7")
 
 libraryDependencies ++= Seq(
-  "org.scala-lang" % "scala-library" % "2.11.4",
-  "org.scala-lang" % "scala-reflect" % "2.11.4",
-  "org.scala-lang" % "scala-actors" % "2.11.4",
-  "org.scala-lang.modules" % "scala-xml_2.11" % "1.0.2", 
   "cglib" % "cglib" % "3.1"
 )

@@ -8,7 +8,7 @@ import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
 public class MinderUtils {
-  public static Wrapper createWrapper(Class<?> clazz, ISignalHandler signalHandler) {
+  public static Wrapper createWrapper(Class<Wrapper> clazz, ISignalHandler signalHandler) {
     return (Wrapper) Enhancer.create(clazz, new Interceptor(signalHandler));
   }
 
@@ -26,7 +26,7 @@ public class MinderUtils {
         return signalHandler.handleSignal(obj, method, args);
       } else {
         // perform a regular call
-        return method.invoke(obj, args);
+        return proxy.invokeSuper(obj, args);
       }
     }
   }
