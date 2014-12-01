@@ -5,6 +5,6 @@ target
 *.prefs
 .project
 .classpath
-
 .idea
-project/.DS_Store
+.DS_Store
+*/.DS_Store

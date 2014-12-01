@@ -21,6 +21,10 @@ public class ReflectionUtils {
   public static final String JAVA_TYPE_EXP = "([a-zA-Z_]\\w*)(\\.([a-zA-Z_]\\w*))*(\\s*(\\[\\s*\\]))*";
   public static final String STARTS_WITH_KEYWORD = keywords + "\\..*";
   public static final String ENDS_WITH_KEYWORD = ".*\\." + keywords;
+
+  /**
+   * jaşksdjklashdflkj <p> </p>
+   */
   public static final String INCLUDES_KEYWORD = ".*\\." + keywords + "\\..*";
   public static final String PRIMARY = keywords;
 
