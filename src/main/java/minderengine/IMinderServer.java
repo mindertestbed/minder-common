@@ -3,26 +3,37 @@ package minderengine;
 import java.util.HashMap;
 
 /**
- * Represents the xoolan server interface, used for communicating with the minder server
+ * Represents the xoolan server interface, used for communicating with the
+ * minder server
+ * 
  * @author yerlibilgin
- *
+ * 
  */
 public interface IMinderServer {
 
-  /**
-   * called when a client first connects and provides information about its services
-   */
-  public void hello(HashMap<String, MethodContainer> hashMap);
+	/**
+	 * Method called when a client connects for the first time and provides
+	 * information about its services
+	 * 
+	 * @param hashMap
+	 *            hashmap of the services provided by the client
+	 */
+	public void hello(HashMap<String, MethodContainer> hashMap);
 
+	/**
+	 * Method to get information about the test designer that runs the tests
+	 * 
+	 * @param sessionId
+	 * @return
+	 */
+	public UserDTO getUserInfo(long sessionId);
 
-  /**
-   * Provides information about the test designer user that runs the tests
-   */
-  public UserDTO getUserInfo(long sessionId);
-  
-  /**
-   * called on the server when a client emits a signal
-   */
-  public Object signalEmitted(String signalName, Object [] args);
+	/**
+	 * Method called on the server when a client emits a signal
+	 * 
+	 * @param signalName
+	 * @param args
+	 * @return
+	 */
+	public Object signalEmitted(String signalName, Object[] args);
 }
-
