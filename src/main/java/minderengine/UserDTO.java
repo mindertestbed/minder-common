@@ -1,55 +1,107 @@
 package minderengine;
 
 /**
- * Created by yerlibilgin on 30/11/14.
- * <br>
+ * 
  * A data transfer object that wraps information about the minder server user.
+ * 
+ * @author yerlibilgin
  */
 public class UserDTO {
-  private String userName;
-  private String name;
-  private String surname;
-  private String eMail;
+	private String userName;
+	private String name;
+	private String surname;
+	private String eMail;
 
-  public UserDTO(String userName, String name, String surname, String eMail) {
-    this.userName = userName;
-    this.name = name;
-    this.surname = surname;
-    this.eMail = eMail;
-  }
+	/**
+	 * Constructor of UserTDO object
+	 * 
+	 * @param userName
+	 * @param name
+	 * @param surname
+	 * @param eMail
+	 */
+	public UserDTO(String userName, String name, String surname, String eMail) {
+		this.userName = userName;
+		this.name = name;
+		this.surname = surname;
+		this.eMail = eMail;
+	}
 
-  public UserDTO() {
-  }
+	/**
+ * 
+ */
+	public UserDTO() {
+	}
 
-  public String getUserName() {
-    return userName;
-  }
+	/**
+	 * etter method of username variable
+	 * 
+	 * @return
+	 */
+	public String getUserName() {
+		return userName;
+	}
 
-  public String getName() {
-    return name;
-  }
+	/**
+	 * etter method of name variable
+	 * 
+	 * @return
+	 */
+	public String getName() {
+		return name;
+	}
 
-  public String getSurname() {
-    return surname;
-  }
+	/**
+	 * Getter method of surname variable
+	 * 
+	 * @return
+	 */
+	public String getSurname() {
+		return surname;
+	}
 
-  public String geteMail() {
-    return eMail;
-  }
+	/**
+	 * getter method of email variable
+	 * 
+	 * @return
+	 */
+	public String geteMail() {
+		return eMail;
+	}
 
-  public void setUserName(String userName) {
-    this.userName = userName;
-  }
+	/**
+	 * Setter method of username variable
+	 * 
+	 * @param userName
+	 */
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	/**
+	 * Setter method of name variable
+	 * 
+	 * @param name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public void setSurname(String surname) {
-    this.surname = surname;
-  }
+	/**
+	 * Setter method of surname variable
+	 * 
+	 * @param surname
+	 */
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
 
-  public void seteMail(String eMail) {
-    this.eMail = eMail;
-  }
+	/**
+	 * Setter method of email variable
+	 * 
+	 * @param eMail
+	 */
+	public void seteMail(String eMail) {
+		this.eMail = eMail;
+	}
 }

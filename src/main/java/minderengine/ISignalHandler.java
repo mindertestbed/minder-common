@@ -3,6 +3,7 @@ package minderengine;
 import java.lang.reflect.Method;
 
 /**
+ * Base class for Signal Handlers.
  * 
  * @author yerlibilgin
  * 
