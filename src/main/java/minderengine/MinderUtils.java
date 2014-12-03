@@ -8,8 +8,7 @@ import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
 /**
- * Class that enables TDs to locally test their systems. Enables TDs to give
- * their own Signal Handler to their wrapped systems.
+ * Class for association of a wrapper with a signal handler.
  * 
  * @author yerlibilgin
  * 

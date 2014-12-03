@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 /**
  * Class that serves the purpose of saving the resolved methods of a wrapped system.
- * Contains the method itsef and a key generated according to the slot-specific signature
+ * Contains the method itself and a key generated according to the slot-specific signature
  * @author yerlibilgin
  * 
  */
