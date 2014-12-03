@@ -24,27 +24,30 @@ public abstract class Wrapper {
 	}
 
 	/**
-	 * Overridden in case of need to start up a wrapped object before usage
+	 * Overridden in case of need to start up a wrapped object prior to a test
 	 */
-	public void start() {
+	public void startTest() {
 
 	}
+
+	/**
+	 * Provides information about the user that started the current test.
+	 * An invocation of this method is only valid between start() and stop() methods.
+	 *
+	 * Minder-client is responsible for filling this method in runtime to provide the
+	 * active session user.
+	 *
+	 * @return test user information data transfer object
+	 */
+	@Signal
+	public abstract UserDTO getCurrentTestUserInfo();
 
 	/**
 	 * Overridden in case of a need to stop any wrapped object before finalizing
 	 * the test
 	 */
-	public void stop() {
+	public void finishTest() {
 
-	}
-
-	/**
-	 * A shortcut, convenience method for restarting a wrapped object. Defaults
-	 * to stop() followed by start(). Subject to change.
-	 */
-	public void restart() {
-		stop();
-		start();
 	}
 
 	/**

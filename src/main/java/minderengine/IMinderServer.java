@@ -18,7 +18,7 @@ public interface IMinderServer {
 	 * @param hashMap
 	 *            hashmap of the services provided by the client
 	 */
-	public void hello(HashMap<String, MethodContainer> hashMap);
+	public void hello(String uid, HashMap<String, MethodContainer> hashMap);
 
 	/**
 	 * Method to get information about the test designer that runs the tests
@@ -26,14 +26,14 @@ public interface IMinderServer {
 	 * @param sessionId
 	 * @return
 	 */
-	public UserDTO getUserInfo(long sessionId);
+	public UserDTO getUserInfo(String sessionId);
 
 	/**
 	 * Method called on the server when a client emits a signal
 	 * 
 	 * @param signalName
-	 * @param args
+	 * @param signalData
 	 * @return
 	 */
-	public Object signalEmitted(String signalName, Object[] args);
+	public Object signalEmitted(String sessionId, String uid, String signalName, SignalData signalData);
 }
