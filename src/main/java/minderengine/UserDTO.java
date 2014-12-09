@@ -36,7 +36,7 @@ public class UserDTO {
 	/**
 	 * etter method of username variable
 	 * 
-	 * @return
+	 * @return the userName of the user
 	 */
 	public String getUserName() {
 		return userName;
@@ -45,7 +45,7 @@ public class UserDTO {
 	/**
 	 * etter method of name variable
 	 * 
-	 * @return
+	 * @return the first name of the user if it exists
 	 */
 	public String getName() {
 		return name;
@@ -53,8 +53,8 @@ public class UserDTO {
 
 	/**
 	 * Getter method of surname variable
-	 * 
-	 * @return
+	 *
+	 * @return the family name of the user if it exists
 	 */
 	public String getSurname() {
 		return surname;
@@ -63,7 +63,7 @@ public class UserDTO {
 	/**
 	 * getter method of email variable
 	 * 
-	 * @return
+	 * @return the email of the user
 	 */
 	public String geteMail() {
 		return eMail;
@@ -81,7 +81,7 @@ public class UserDTO {
 	/**
 	 * Setter method of name variable
 	 * 
-	 * @param name
+	 * @param name the new first name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -90,7 +90,7 @@ public class UserDTO {
 	/**
 	 * Setter method of surname variable
 	 * 
-	 * @param surname
+	 * @param surname the new surname
 	 */
 	public void setSurname(String surname) {
 		this.surname = surname;
@@ -99,7 +99,7 @@ public class UserDTO {
 	/**
 	 * Setter method of email variable
 	 * 
-	 * @param eMail
+	 * @param eMail the new email
 	 */
 	public void seteMail(String eMail) {
 		this.eMail = eMail;

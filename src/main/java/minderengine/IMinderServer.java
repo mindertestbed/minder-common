@@ -1,6 +1,6 @@
 package minderengine;
 
-import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Represents the xoolan server interface, used for communicating with the
@@ -15,10 +15,10 @@ public interface IMinderServer {
 	 * Method called when a client connects for the first time and provides
 	 * information about its services
 	 * 
-	 * @param hashMap
-	 *            hashmap of the services provided by the client
+	 * @param methodSet
+	 *            the set of signals and slots provided by the underlying wrapper.
 	 */
-	public void hello(String uid, HashMap<String, MethodContainer> hashMap);
+	public void hello(String uid, Set<MethodContainer> methodSet);
 
 	/**
 	 * Method to get information about the test designer that runs the tests

@@ -6,13 +6,23 @@ import java.util.HashMap;
 
 /**
  * Exception mechanism of minder environment
+ *
+ *
  * @author yerlibilgin
- * 
+ *
  */
 @SuppressWarnings("serial")
 public class MinderException extends RuntimeException {
-	public static final int E_UNKNOWN_RUNNING = -100;
+	// @TODO: we need to find and add possible error codes int the future
+	public static final int E_UNKNOWN = -100;
 	public static final int E_SUT_NOT_RUNNING = -101;
+	public static final int E_UNKNOWN_SIGNAL = -102;
+	public static final int E_UNKNOWN_SLOT = -103;
+	public static final int E_INCOMPATIBLE_PARAMETER = -104;
+	public static final int E_UNKNOWN_GUID = -105;
+	public static final int E_LOGIN_FAILED = -106;
+	public static final int E_INVALID_SESSION = -107;
+
 	private int errorCode;
 	private static HashMap<Integer, String> errorCodeStrMap;
 

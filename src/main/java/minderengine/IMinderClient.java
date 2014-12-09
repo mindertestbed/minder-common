@@ -25,6 +25,9 @@ public interface IMinderClient {
    */
   public void startTest(String sessionId);
 
+  /**
+   * The client method that is called by the server when a test is finished.
+   */
   public void finishTest();
 
 }

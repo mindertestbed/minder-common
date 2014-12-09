@@ -1,6 +1,7 @@
 package minderengine;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -13,7 +14,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * <br>
  * Created by yerlibilgin on 02/12/14.
  */
-public class SignalData implements Serializable {
+public class SignalData implements Serializable, Comparable<SignalData> {
   /**
    * The sequence number of this signal instance. This has to be unique for the minder-client instance
    * that it has been created.
@@ -40,5 +41,27 @@ public class SignalData implements Serializable {
     this.args = args;
     //assign the next sequence number to this instance.
     this.seqNum = atomicSequenceNumberGenerator.getAndIncrement();
+  }
+
+  @Override
+  public int compareTo(SignalData o) {
+    return (int) (this.seqNum - o.seqNum);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    SignalData that = (SignalData) o;
+
+    if (seqNum != that.seqNum) return false;
+
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    return (int) (seqNum ^ (seqNum >>> 32));
   }
 }
