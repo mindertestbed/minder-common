@@ -4,48 +4,94 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
 
+/**
+ * Exception mechanism of minder environment
+ *
+ *
+ * @author yerlibilgin
+ *
+ */
 @SuppressWarnings("serial")
 public class MinderException extends RuntimeException {
-  public static final int E_UNKNOWN_RUNNING = -100;
-  public static final int E_SUT_NOT_RUNNING = -101;
-  private int errorCode;
-  private static HashMap<Integer, String> errorCodeStrMap;
+	// @TODO: we need to find and add possible error codes int the future
+	public static final int E_UNKNOWN = -100;
+	public static final int E_SUT_NOT_RUNNING = -101;
+	public static final int E_UNKNOWN_SIGNAL = -102;
+	public static final int E_UNKNOWN_SLOT = -103;
+	public static final int E_INCOMPATIBLE_PARAMETER = -104;
+	public static final int E_UNKNOWN_GUID = -105;
+	public static final int E_LOGIN_FAILED = -106;
+	public static final int E_INVALID_SESSION = -107;
 
-  public MinderException(int errorCode, String message, Throwable cause) {
-    super(message, cause);
-  }
+	private int errorCode;
+	private static HashMap<Integer, String> errorCodeStrMap;
 
-  public MinderException(int errorCode, String message) {
-    super(message);
-  }
+	/**
+	 * 
+	 * @param errorCode
+	 * @param message
+	 * @param cause
+	 */
+	public MinderException(int errorCode, String message, Throwable cause) {
+		super(message, cause);
+	}
 
-  public MinderException(int errorCode, Throwable cause) {
-    super(cause);
-  }
+	/**
+	 * 
+	 * @param errorCode
+	 * @param message
+	 */
+	public MinderException(int errorCode, String message) {
+		super(message);
+	}
 
-  public MinderException(int errorCode) {
-    super(errorCodeToString(errorCode));
-    this.errorCode = errorCode;
-  }
+	/**
+	 * 
+	 * @param errorCode
+	 * @param cause
+	 */
+	public MinderException(int errorCode, Throwable cause) {
+		super(cause);
+	}
 
-  public int getErrorCode() {
-    return errorCode;
-  }
+	/**
+	 * 
+	 * @param errorCode
+	 */
+	public MinderException(int errorCode) {
+		super(errorCodeToString(errorCode));
+		this.errorCode = errorCode;
+	}
 
-  public synchronized static String errorCodeToString(int errorCode) {
-    if (errorCodeStrMap == null) {
-      Field[] fields = MinderException.class.getDeclaredFields();
+	/**
+	 * 
+	 * @return
+	 */
+	public int getErrorCode() {
+		return errorCode;
+	}
 
-      for (Field field : fields) {
-        if (Modifier.isStatic(field.getModifiers()) && Modifier.isFinal(field.getModifiers())
-            && Modifier.isPublic(field.getModifiers())) {
-          try {
-            errorCodeStrMap.put(field.getInt(null), field.getName());
-          } catch (Exception e) {
-          }
-        }
-      }
-    }
-    return errorCodeStrMap.get(errorCode);
-  }
+	/**
+	 * 
+	 * @param errorCode
+	 * @return
+	 */
+	public synchronized static String errorCodeToString(int errorCode) {
+		if (errorCodeStrMap == null) {
+			Field[] fields = MinderException.class.getDeclaredFields();
+
+			for (Field field : fields) {
+				if (Modifier.isStatic(field.getModifiers())
+						&& Modifier.isFinal(field.getModifiers())
+						&& Modifier.isPublic(field.getModifiers())) {
+					try {
+						errorCodeStrMap
+								.put(field.getInt(null), field.getName());
+					} catch (Exception e) {
+					}
+				}
+			}
+		}
+		return errorCodeStrMap.get(errorCode);
+	}
 }

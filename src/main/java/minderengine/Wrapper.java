@@ -1,47 +1,60 @@
 package minderengine;
 
-
 /**
- * Base class for all wrappers. Using this class, any module, built-in function
- * will be represented as an active object belonging to the minder environment.
- * 
- * This class was deliberately written in java because it will be provided to TD's
- * who are not required to know scala
- * @author yerlibilgin
+ * The base wrapper class of minder-common.
+ * <br>
+ * TDs will extend this class in order to integrate their systems to the minder
+ * environment.
+ * <br>
+ * Using this class, any module, built-in function will be represented as an
+ * active object belonging to the minder environment.
+ * <br>
+ * TDs are not expected to know SCALA, this class will be implemented in Java.
  *
+ * @author yerlibilgin
  */
+
 public abstract class Wrapper {
-  public Wrapper(){
-  }
-  
+
   /**
-   * Override if you really have a wrapped object that needs to be started up before getting used
+   * Constructor of the base wrapper class
    */
-  public void start(){
-    
-  }
-  
-  /**
-   * Override if you have a wrapper that must be closed before the test finishes
-   */
-  public void stop(){
-    
+  public Wrapper() {
   }
 
   /**
-   * A shortcut, convenience method for restarting the wrapped object. Defaults to
-   * stop, start. Might be changed.
+   * Overridden in case of need to start up a wrapped object prior to a test
    */
-  public void restart(){
-    stop();
-    start();
+  public void startTest() {
+
   }
 
   /**
-   * Returns the information about the design time UI.
-   * @return
+   * Provides information about the user that started the current test.
+   * An invocation of this method is only valid between start() and stop() methods.
+   * <br>
+   * This is a special signal that the wrapped SUT may call whenever it wants to.
+   * It is a special signal that returns a value.
+   *
+   * @return test user information data transfer object
    */
-  public String getLabel(){
+  @Signal
+  public abstract UserDTO getCurrentTestUserInfo();
+
+  /**
+   * Overridden in case of a need to stop any wrapped object before finalizing
+   * the test
+   */
+  public void finishTest() {
+
+  }
+
+  /**
+   * Method for getting the label of a wrapped object. *
+   *
+   * @return the label of the wrapped object in the minder environment.
+   */
+  public String getLabel() {
     return "Wrapper";
   }
 }
