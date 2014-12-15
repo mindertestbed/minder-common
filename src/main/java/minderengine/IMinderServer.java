@@ -18,7 +18,7 @@ public interface IMinderServer {
 	 * @param methodSet
 	 *            the set of signals and slots provided by the underlying wrapper.
 	 */
-	public void hello(String uid, Set<MethodContainer> methodSet);
+	public void hello(String uid, String label, Set<MethodContainer> methodSet);
 
 	/**
 	 * Method to get information about the test designer that runs the tests

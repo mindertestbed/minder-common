@@ -78,6 +78,7 @@ public class MinderException extends RuntimeException {
 	 */
 	public synchronized static String errorCodeToString(int errorCode) {
 		if (errorCodeStrMap == null) {
+			errorCodeStrMap = new HashMap<>();
 			Field[] fields = MinderException.class.getDeclaredFields();
 
 			for (Field field : fields) {
