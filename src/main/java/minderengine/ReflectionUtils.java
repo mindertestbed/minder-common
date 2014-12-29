@@ -26,6 +26,8 @@ public class ReflectionUtils {
   public static final String INCLUDES_KEYWORD = ".*\\." + keywords + "\\..*";
   public static final String PRIMARY = keywords;
 
+  public static ClassLoader defaultClassLoader = ReflectionUtils.class.getClassLoader();
+
   /**
    * A validator that assumes that an array identifier would be like xyz.Abc[] or int[] <br>
    * int is a valid identifier but int.int is not
@@ -102,8 +104,9 @@ public class ReflectionUtils {
 
       if (primitiveArrayMap.containsKey(firstPart)) {
         try {
-          return Class.forName(outer.append(
-              primitiveArrayMap.get(firstPart)).toString());
+          String className = outer.append(
+              primitiveArrayMap.get(firstPart)).toString();
+          return Class.forName(className, true, defaultClassLoader);
         } catch (ClassNotFoundException e) {
           throw new IllegalArgumentException(cannonical
               + " is not valid in this context", e);
@@ -114,7 +117,7 @@ public class ReflectionUtils {
           String className = outer.append('L')
               .append(new String(canArray, 0, firstBracketIndex))
               .append(';').toString();
-          return Class.forName(className);
+          return Class.forName(className, true, defaultClassLoader);
         } catch (ClassNotFoundException e) {
           throw new IllegalArgumentException(cannonical
               + " is not valid in this context", e);
@@ -123,7 +126,7 @@ public class ReflectionUtils {
     } else {
       // not array, not primitive
       try {
-        return Class.forName(cannonical);
+        return Class.forName(cannonical, true, defaultClassLoader);
       } catch (ClassNotFoundException e) {
         throw new IllegalArgumentException(cannonical
             + " is not valid in this context", e);
