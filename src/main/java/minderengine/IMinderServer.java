@@ -18,7 +18,7 @@ public interface IMinderServer {
 	 * @param methodSet
 	 *            the set of signals and slots provided by the underlying wrapper.
 	 */
-	public void hello(String uid, String label, Set<MethodContainer> methodSet);
+	public void hello(String label, Set<MethodContainer> methodSet);
 
 	/**
 	 * Method to get information about the test designer that runs the tests
@@ -30,10 +30,12 @@ public interface IMinderServer {
 
 	/**
 	 * Method called on the server when a client emits a signal
-	 * 
-	 * @param signalName
-	 * @param signalData
+	 *
+	 * @param sessionId  The email of the current user used as the session id
+	 * @param label      the unique wrapper label
+	 * @param signalName   the signal name
+	 * @param signalData   the signal data (method arguments)
 	 * @return
 	 */
-	public Object signalEmitted(String sessionId, String uid, String signalName, SignalData signalData);
+	public Object signalEmitted(String sessionId, String label, String signalName, SignalData signalData);
 }

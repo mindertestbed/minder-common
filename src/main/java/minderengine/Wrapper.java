@@ -53,7 +53,11 @@ public abstract class Wrapper {
    * Method for getting the label of a wrapped object. *
    *
    * @return the label of the wrapped object in the minder environment.
+   *
+   * @deprecated since version 0.0.5 and is not used by the server anymore. The actual name is the one provided
+   * during a wrapper registration.
    */
+  @Deprecated
   public String getLabel() {
     return "Wrapper";
   }
