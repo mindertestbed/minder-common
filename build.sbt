@@ -2,7 +2,7 @@ organization := "gov.tubitak.minder"
 
 name := "minder-common"
 
-version := "0.0.3"
+version := "0.0.5"
 
 resolvers += "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
 
