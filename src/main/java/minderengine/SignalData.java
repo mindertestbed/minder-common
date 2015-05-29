@@ -29,6 +29,7 @@ public class SignalData implements Serializable, Comparable<SignalData> {
    */
   public final Object[] args;
 
+  public final String error;
   /**
    * The signal sequence number generator.
    *
@@ -41,6 +42,15 @@ public class SignalData implements Serializable, Comparable<SignalData> {
     this.args = args;
     //assign the next sequence number to this instance.
     this.seqNum = atomicSequenceNumberGenerator.getAndIncrement();
+
+    this.error = null;
+  }
+
+  public SignalData(Object[] args, String error){
+    this.args = args;
+    //assign the next sequence number to this instance.
+    this.seqNum = atomicSequenceNumberGenerator.getAndIncrement();
+    this.error = error;
   }
 
   @Override

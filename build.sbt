@@ -2,7 +2,7 @@ organization := "gov.tubitak.minder"
 
 name := "minder-common"
 
-version := "0.0.5"
+version := "0.0.6"
 
 resolvers += "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
 
@@ -10,9 +10,9 @@ resolvers += Resolver.mavenLocal
 
 resolvers += "Eid public repository" at "http://eidrepo:8081/nexus/content/groups/public/"
 
-javacOptions in (Compile, compile) ++= Seq("-source", "1.7", "-target", "1.7")
+javacOptions in (Compile, compile) ++= Seq("-source", "1.8", "-target", "1.8")
 
-javacOptions in (doc) ++= Seq("-source", "1.7")
+javacOptions in (doc) ++= Seq("-source", "1.8")
 
 scalaVersion := "2.11.1"
 

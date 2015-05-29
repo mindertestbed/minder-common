@@ -17,17 +17,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.METHOD })
 public @interface Signal {
-
-	/**
-	 * Connection type enumeration value, SYNC or ASYNC
-	 * 
-	 */
-	public static enum ConnectionType {
-		SYNC, ASYNC
-	}
-
 	/**
 	 * @return the ConnectionType value, ASYNC by default
 	 */
-	ConnectionType value() default ConnectionType.ASYNC;
+	String name() default "";
 }
