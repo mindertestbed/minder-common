@@ -60,7 +60,12 @@ public class MinderUtils {
 		@Override
 		public Object intercept(Object obj, Method method, Object[] args,
 				MethodProxy proxy) throws Throwable {
-			if (Modifier.isAbstract(method.getModifiers())
+			if(method.getName().equals("reportErrorForSignal")){
+				String name = args[0].toString();
+
+				Method targetMethod = findMethod(obj.getClass(), name);
+				return signalHandler.reportError(obj, MethodContainer.generateMethodKey(targetMethod), args[1].toString());
+			} else if (Modifier.isAbstract(method.getModifiers())
 					&& method.isAnnotationPresent(Signal.class)) {
 				// this is a signal. implement it
 				return signalHandler.handleSignal(obj, method, args);
@@ -68,6 +73,21 @@ public class MinderUtils {
 				// perform a regular call
 				return proxy.invokeSuper(obj, args);
 			}
+		}
+
+		private Method findMethod(Class<? extends Object> aClass, String name) {
+
+			Method[] methods = aClass.getDeclaredMethods();
+			for (Method method : methods) {
+				Signal annotation = (Signal) method.getAnnotation(Signal.class);
+
+				if(annotation != null){
+					if (name.equals(annotation.name()))
+						return method;
+				}
+			}
+
+			throw new RuntimeException("A method with label " + name + " was not found");
 		}
 	}
 }

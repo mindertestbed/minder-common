@@ -61,4 +61,15 @@ public abstract class Wrapper {
   public String getLabel() {
     return "Wrapper";
   }
+
+
+  /**
+   *
+   * @param signalIdentifier the name given to the signal via @Signal annotation.
+   *                         for example: <code>@Signal(name="mySignal")</code> <br>
+   *                         Then <code>reportErrorForSignal("mySignal")</code>
+   *
+   * @param errorMessage error string
+   */
+  public abstract void reportErrorForSignal(String signalIdentifier, String errorMessage);
 }

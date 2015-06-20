@@ -18,4 +18,6 @@ public interface ISignalHandler {
 	 * @return
 	 */
 	public Object handleSignal(Object obj, Method signalMethod, Object[] args);
+
+	public Object reportError(Object obj, String signalName, String errorMessage);
 }
