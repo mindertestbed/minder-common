@@ -6,12 +6,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * This class represents the data (parameter values) of a signal when it is emitted.
+ * This class represents the data (parameter values) of a signal or an error when a signal is emitted.
  * <br>
- * It contains two important fields. One is a signal number that is used to ensure a correct sequence
- * for signal handling on the server side. The other is the actual signal parameters that have been
- * emitted.
- * <br>
+ * It contains an important field. The signal number that is used to ensure a correct sequence
+ * for signal handling on the server side.
+ *
+ * The children of this class are responsible of carrying either signal params, or error
+ *
  * Created by yerlibilgin on 02/12/14.
  */
 public class SignalData implements Serializable, Comparable<SignalData> {
@@ -25,12 +26,6 @@ public class SignalData implements Serializable, Comparable<SignalData> {
   public final long seqNum;
 
   /**
-   * The actual signal arguments that were provided as parameters to the signal being emitted.
-   */
-  public final Object[] args;
-
-  public final String error;
-  /**
    * The signal sequence number generator.
    *
    * @TODO: We should serialize this value to make sure that the server does not get the same numbers
@@ -38,19 +33,9 @@ public class SignalData implements Serializable, Comparable<SignalData> {
    */
   private static final AtomicLong atomicSequenceNumberGenerator = new AtomicLong(0);
 
-  public SignalData(Object[] args){
-    this.args = args;
+  public SignalData(){
     //assign the next sequence number to this instance.
     this.seqNum = atomicSequenceNumberGenerator.getAndIncrement();
-
-    this.error = null;
-  }
-
-  public SignalData(Object[] args, String error){
-    this.args = args;
-    //assign the next sequence number to this instance.
-    this.seqNum = atomicSequenceNumberGenerator.getAndIncrement();
-    this.error = error;
   }
 
   @Override

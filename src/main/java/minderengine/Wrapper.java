@@ -17,6 +17,16 @@ package minderengine;
 public abstract class Wrapper {
 
   /**
+   * The possible exception that might have occurred during a signal call,
+   * if this is set, it will be consumed by the next signal call
+   * and that signal call will be treated as an error. Thus, please
+   * handle with care!.
+   *
+   * It is thread safe. Thus different threads might use different reports simultaneously.
+   */
+  private ThreadLocal<SignalFailedException> signalFailedException = new ThreadLocal<>();
+
+  /**
    * Constructor of the base wrapper class
    */
   public Wrapper() {
@@ -50,26 +60,52 @@ public abstract class Wrapper {
   }
 
   /**
-   * Method for getting the label of a wrapped object. *
-   *
-   * @return the label of the wrapped object in the minder environment.
-   *
-   * @deprecated since version 0.0.5 and is not used by the server anymore. The actual name is the one provided
-   * during a wrapper registration.
+   * The wrappers that implement this method are responsible to report
+   * the name of the actual System that is being tested. This is used
+   * for reporting. For example, the wrapper name might be
+   * IBM_B2BWrapper, but the actual SUT name might be "IBM B2B Advanced Communications Gateway"
+   * @return The name of the actual system under test.
+   * @since 0.0.8
    */
-  @Deprecated
-  public String getLabel() {
-    return "Wrapper";
+  public abstract String getSUTName();
+
+
+  /**
+   * This method is used for reporting errors on the signals.
+   *
+   * for example, if we have a signal <code>triggerServer(...)</code>
+   *
+   * we do the following:
+   * <code>
+   *   beginSignalError(exception);
+   *   triggerServer(...)
+   * </code>
+   *
+   * The beginSignalError call ensures that the next signal call will not be
+   * a regular call, instead, it will send an error report (exception)
+   * to the server informing that the signal call encountered an error.
+   * The parameters of the signal are not important in this case,
+   * so put in anything you want (null, -1, -1L, false....)
+   *
+   * @param signalFailedException
+   * the exception that will be reported to the server.
+   * @since 0.0.8
+   */
+  public void beginReportSignalError(SignalFailedException signalFailedException){
+    this.signalFailedException.set(signalFailedException);
   }
 
 
   /**
+   * Returns the exception (if any) then resets its value.
    *
-   * @param signalIdentifier the name given to the signal via @Signal annotation.
-   *                         for example: <code>@Signal(name="mySignal")</code> <br>
-   *                         Then <code>reportErrorForSignal("mySignal")</code>
+   * The minder-client is responsible of calling this everytime when it will call a signal.
    *
-   * @param errorMessage error string
+   * @return the exception if any
    */
-  public abstract void reportErrorForSignal(String signalIdentifier, String errorMessage);
+  public SignalFailedException consumeError(){
+    SignalFailedException exception = this.signalFailedException.get();
+    this.signalFailedException.remove();
+    return exception;
+  }
 }
