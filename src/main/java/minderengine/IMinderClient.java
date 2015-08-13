@@ -30,4 +30,6 @@ public interface IMinderClient {
    */
   public void finishTest();
 
+  public String getSUTName();
+
 }

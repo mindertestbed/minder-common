@@ -5,7 +5,6 @@
 import java.util.concurrent.PriorityBlockingQueue
 
 import minderengine.SignalData
-import mtdl.ReflectionUtils
 import org.specs2.mutable.Specification
 
 class MinderCommonTest extends Specification {
@@ -44,12 +43,12 @@ class MinderCommonTest extends Specification {
    */
   "SignalData instances " should {
     "be taken wrt their seq.num order from a pblqueue" in {
-      val s1 = new SignalData(null);
-      val s2 = new SignalData(null);
-      val s3 = new SignalData(null);
-      val s4 = new SignalData(null);
-      val s5 = new SignalData(null);
-      val s6 = new SignalData(null);
+      val s1 = new SignalData();
+      val s2 = new SignalData();
+      val s3 = new SignalData();
+      val s4 = new SignalData();
+      val s5 = new SignalData();
+      val s6 = new SignalData();
       val pbq = new PriorityBlockingQueue[SignalData]();
 
       pbq.offer(s6);

@@ -14,11 +14,13 @@ public interface IMinderServer {
 	/**
 	 * Method called when a client connects for the first time and provides
 	 * information about its services
-	 * 
+	 *
+	 * @param identifier
+	 * Wrapper|Version
 	 * @param methodSet
 	 *            the set of signals and slots provided by the underlying wrapper.
 	 */
-	public void hello(String label, Set<MethodContainer> methodSet);
+	public void hello(String identifier, Set<MethodContainer> methodSet);
 
 	/**
 	 * Method to get information about the test designer that runs the tests
