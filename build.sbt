@@ -2,7 +2,7 @@ organization := "gov.tubitak.minder"
 
 name := "minder-common"
 
-version := "0.2.2"
+version := "0.3.1"
 
 resolvers += "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
 
@@ -14,13 +14,13 @@ javacOptions in (Compile, compile) ++= Seq("-source", "1.8", "-target", "1.8")
 
 javacOptions in (doc) ++= Seq("-source", "1.8")
 
-scalaVersion := "2.11.1"
+scalaVersion := "2.11.7"
 
 crossPaths := false
 
 libraryDependencies ++= Seq(
   "cglib" % "cglib" % "3.1",
-  "org.specs2" % "specs2_2.11" % "2.3.11" % "test"
+  "org.specs2" % "specs2_2.11" % "3.3.1" % "test"
 )
 
 publishTo := Some("eid releases" at "http://eidrepo:8081/nexus/content/repositories/releases")
