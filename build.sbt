@@ -8,7 +8,7 @@ resolvers += "Sonatype snapshots" at "https://oss.sonatype.org/content/repositor
 
 resolvers += Resolver.mavenLocal
 
-resolvers += "Eid public repository" at "http://eidrepo:8081/nexus/content/groups/public/"
+resolvers += "Eid public repository" at "http://193.140.74.199:8081/nexus/content/groups/public/"
 
 javacOptions in (Compile, compile) ++= Seq("-source", "1.8", "-target", "1.8")
 
@@ -23,7 +23,7 @@ libraryDependencies ++= Seq(
   "org.specs2" % "specs2_2.11" % "3.3.1" % "test"
 )
 
-publishTo := Some("eid releases" at "http://eidrepo:8081/nexus/content/repositories/releases")
+publishTo := Some("eid releases" at "http://193.140.74.199:8081/nexus/content/repositories/releases")
 
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 
