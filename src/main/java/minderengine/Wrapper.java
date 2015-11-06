@@ -108,4 +108,13 @@ public abstract class Wrapper {
     this.signalFailedException.remove();
     return exception;
   }
+  
+  /**
+   * Provides gitb specific informations of the gitb compatible wrapper.
+   * If wrapper is not gitb compatible, it will not necessary to return any information.
+   * <br>
+   * 
+   * @return gitb endpont data transfer object
+   */
+  public abstract GitbEndpointDTO getGitbEndpointMetadata();
 }
