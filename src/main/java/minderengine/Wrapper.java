@@ -40,6 +40,13 @@ public abstract class Wrapper {
   }
 
   /**
+   * Since 0.4 - added parameter support for future scalability
+   */
+  public void startTest(StartTestObject startTestObject) {
+
+  }
+
+  /**
    * Provides information about the user that started the current test.
    * An invocation of this method is only valid between start() and stop() methods.
    * <br>
@@ -60,14 +67,22 @@ public abstract class Wrapper {
   }
 
   /**
+   * Added for future scalability (ability to add paraemters)
+   * @param finishTestObject
+   */
+  public void finishTest(FinishTestObject finishTestObject) {
+
+  }
+
+  /**
    * The wrappers that implement this method are responsible to report
    * the name of the actual System that is being tested. This is used
    * for reporting. For example, the wrapper name might be
    * IBM_B2BWrapper, but the actual SUT name might be "IBM B2B Advanced Communications Gateway"
-   * @return The name of the actual system under test.
+   * @return The identifier of the actual system under test.
    * @since 0.0.8
    */
-  public abstract String getSUTName();
+  public abstract SUTIdentifier getSUTIdentifier();
 
 
   /**
@@ -114,7 +129,10 @@ public abstract class Wrapper {
    * If wrapper is not gitb compatible, it will not necessary to return any information.
    * <br>
    * 
+   * The default implementation returns null, and the clients don't have to implement this method.
    * @return gitb endpont data transfer object
    */
-  public abstract GitbEndpointDTO getGitbEndpointMetadata();
+  public GitbEndpointDTO getGitbEndpointMetadata(){
+    return null;
+  }
 }
