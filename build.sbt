@@ -20,7 +20,7 @@ crossPaths := false
 
 libraryDependencies ++= Seq(
   "cglib" % "cglib" % "3.1",
-  "org.specs2" % "specs2_2.11" % "3.3.1" % "test"
+  "com.typesafe.play" %% "play-specs2" % "2.4.2" % "test"
 )
 
 publishTo := Some("eid releases" at "http://193.140.74.199:8081/nexus/content/repositories/releases")
