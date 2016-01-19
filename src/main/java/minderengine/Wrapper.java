@@ -76,13 +76,13 @@ public abstract class Wrapper {
 
   /**
    * The wrappers that implement this method are responsible to report
-   * the name of the actual System that is being tested. This is used
+   * the name(s) of the actual System(s) that are being tested. This is used
    * for reporting. For example, the wrapper name might be
    * IBM_B2BWrapper, but the actual SUT name might be "IBM B2B Advanced Communications Gateway"
    * @return The identifier of the actual system under test.
-   * @since 0.0.8
+   * @since 0.4.2
    */
-  public abstract SUTIdentifier getSUTIdentifier();
+  public abstract SUTIdentifiers getSUTIdentifiers();
 
 
   /**

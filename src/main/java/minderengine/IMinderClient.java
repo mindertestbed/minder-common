@@ -30,5 +30,5 @@ public interface IMinderClient {
    */
   public void finishTest(FinishTestObject startTestObject);
 
-  public SUTIdentifier getSUTIdentifier();
+  public SUTIdentifiers getSUTIdentifiers();
 }
