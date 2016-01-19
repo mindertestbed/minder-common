@@ -20,24 +20,24 @@ public interface IMinderServer {
 	 * @param methodSet
 	 *            the set of signals and slots provided by the underlying wrapper.
 	 */
-	public void hello(String identifier, Set<MethodContainer> methodSet);
+	public void hello(AdapterIdentifier identifier, Set<MethodContainer> methodSet);
 
 	/**
 	 * Method to get information about the test designer that runs the tests
 	 * 
-	 * @param sessionId
+	 * @param session
 	 * @return
 	 */
-	public UserDTO getUserInfo(String sessionId);
+	public UserDTO getUserInfo(TestSession session);
 
 	/**
 	 * Method called on the server when a client emits a signal
 	 *
-	 * @param sessionId  The email of the current user used as the session id
-	 * @param label      the unique wrapper label
+	 * @param session  The session information attached with the current call.
+	 * @param identifier      the adapter identifier
 	 * @param signalName   the signal name
 	 * @param signalData   the signal data (method arguments)
 	 * @return
 	 */
-	public Object signalEmitted(String sessionId, String label, String signalName, SignalData signalData);
+	public Object signalEmitted(TestSession session, AdapterIdentifier identifier, String signalName, SignalData signalData);
 }

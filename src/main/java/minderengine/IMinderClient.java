@@ -10,26 +10,25 @@ public interface IMinderClient {
   /**
    * Method for invoking a slot method
    *
-   * @param sessionId
+   * @param session
    * @param slotName
    * @param args
    * @return
    */
-  public Object callSlot(String sessionId, String slotName, Object[] args);
+  public Object callSlot(TestSession session, String slotName, Object[] args);
 
   /**
    * The client method for starting a test on the wrapper side.
    * The session id is used for
    *
-   * @param sessionId the session id of the test designer user that started this test.
+   * @param startTestObject the session id of the test designer user that started this test.
    */
-  public void startTest(String sessionId);
+  public void startTest(StartTestObject startTestObject);
 
   /**
    * The client method that is called by the server when a test is finished.
    */
-  public void finishTest();
+  public void finishTest(FinishTestObject startTestObject);
 
-  public String getSUTName();
-
+  public SUTIdentifiers getSUTIdentifiers();
 }
