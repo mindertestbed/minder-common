@@ -21,4 +21,5 @@ public @interface Signal {
 	 * @return the ConnectionType value, ASYNC by default
 	 */
 	String name() default "";
+	boolean async() default true;
 }

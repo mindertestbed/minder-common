@@ -1,5 +1,7 @@
 package minderengine;
 
+
+
 /**
  * The base wrapper class of minder-common.
  * <br>
@@ -135,4 +137,12 @@ public abstract class Wrapper {
   public GitbEndpointDTO getGitbEndpointMetadata(){
     return null;
   }
+
+  /**
+   * Enables the adapter to trigger a job in Minder remotely.
+   * synchronous: a response containing the session info is sent to the
+   *
+   */
+  @Signal(async=false)
+  public abstract TestSession trigger(Long jobID, Visibility visibility);
 }
