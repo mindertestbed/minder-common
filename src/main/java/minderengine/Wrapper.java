@@ -27,6 +27,7 @@ public abstract class Wrapper {
    * It is thread safe. Thus different threads might use different reports simultaneously.
    */
   private ThreadLocal<SignalFailedException> signalFailedException = new ThreadLocal<>();
+  private ThreadLocal<String> currentSession = new ThreadLocal<>();
 
   /**
    * Constructor of the base wrapper class
@@ -46,6 +47,15 @@ public abstract class Wrapper {
    */
   public void startTest(StartTestObject startTestObject) {
 
+  }
+
+
+  public String getSessionId() {
+    return currentSession.get();
+  }
+
+  public void setSessionId(String sessionId) {
+    currentSession.set(sessionId);
   }
 
   /**
