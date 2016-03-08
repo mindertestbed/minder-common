@@ -44,9 +44,7 @@ public abstract class Wrapper {
 
   /**
    * Since 0.4 - added parameter support for future scalability
-   * @param startTestObject the Test Object to start
    */
-
   public void startTest(StartTestObject startTestObject) {
 
   }
@@ -82,7 +80,7 @@ public abstract class Wrapper {
 
   /**
    * Added for future scalability (ability to add paraemters)
-   * @param finishTestObject the testObject that is to finish
+   * @param finishTestObject
    */
   public void finishTest(FinishTestObject finishTestObject) {
 
@@ -150,13 +148,14 @@ public abstract class Wrapper {
     return null;
   }
 
+<<<<<<< HEAD
   /**
    * Enables the adapter to trigger a job in Minder remotely.
    * synchronous: a response containing the session info is sent to the
-   * @param jobID the id of the job that the adapter wants to start
-   * @param visibility visibility of the job
-   * @return TestSession
+   *
    */
   @Signal(async=false)
   public abstract TestSession trigger(Long jobID, Visibility visibility);
+=======
+>>>>>>> 3bd420d4d7cef40804208257a5d96b5f07cbb9ca
 }
