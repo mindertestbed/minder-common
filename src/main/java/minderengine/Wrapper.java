@@ -28,6 +28,7 @@ public abstract class Wrapper {
    */
   private ThreadLocal<SignalFailedException> signalFailedException = new ThreadLocal<>();
   private ThreadLocal<String> currentSession = new ThreadLocal<>();
+  private String defaultSession;
 
   /**
    * Constructor of the base wrapper class
@@ -58,6 +59,14 @@ public abstract class Wrapper {
 
   public void setSessionId(String sessionId) {
     currentSession.set(sessionId);
+  }
+
+  public String getDefaultSession() {
+    return defaultSession;
+  }
+
+  public void setDefaultSession(String defaultSession) {
+    this.defaultSession = defaultSession;
   }
 
   /**
