@@ -22,6 +22,7 @@ public class MinderUtils {
    */
   public static Wrapper createWrapper(Class<Wrapper> clazz,
                                       ISignalHandler signalHandler) {
+
     return (Wrapper) Enhancer.create(clazz, new Interceptor(signalHandler));
   }
 
@@ -55,8 +56,8 @@ public class MinderUtils {
     @Override
     public Object intercept(Object obj, Method method, Object[] args,
                             MethodProxy proxy) throws Throwable {
-      if (Modifier.isAbstract(method.getModifiers())
-          && method.isAnnotationPresent(Signal.class)) {
+
+      if (method.isAnnotationPresent(Signal.class)) {
         // this is a signal. implement it
         return signalHandler.handleSignal(obj, method, args);
       } else {
