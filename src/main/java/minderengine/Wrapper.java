@@ -1,5 +1,7 @@
 package minderengine;
 
+
+
 /**
  * The base wrapper class of minder-common.
  * <br>
@@ -25,6 +27,8 @@ public abstract class Wrapper {
    * It is thread safe. Thus different threads might use different reports simultaneously.
    */
   private ThreadLocal<SignalFailedException> signalFailedException = new ThreadLocal<>();
+  private ThreadLocal<String> currentSession = new ThreadLocal<>();
+  private String defaultSession;
 
   /**
    * Constructor of the base wrapper class
@@ -41,9 +45,28 @@ public abstract class Wrapper {
 
   /**
    * Since 0.4 - added parameter support for future scalability
+   * @param startTestObject the Test Object to start
    */
+
   public void startTest(StartTestObject startTestObject) {
 
+  }
+
+
+  public String getSessionId() {
+    return currentSession.get();
+  }
+
+  public void setSessionId(String sessionId) {
+    currentSession.set(sessionId);
+  }
+
+  public String getDefaultSession() {
+    return defaultSession;
+  }
+
+  public void setDefaultSession(String defaultSession) {
+    this.defaultSession = defaultSession;
   }
 
   /**
@@ -68,7 +91,7 @@ public abstract class Wrapper {
 
   /**
    * Added for future scalability (ability to add paraemters)
-   * @param finishTestObject
+   * @param finishTestObject the testObject that is to finish
    */
   public void finishTest(FinishTestObject finishTestObject) {
 
@@ -135,4 +158,14 @@ public abstract class Wrapper {
   public GitbEndpointDTO getGitbEndpointMetadata(){
     return null;
   }
+
+  /**
+   * Enables the adapter to trigger a job in Minder remotely.
+   * synchronous: a response containing the session info is sent to the
+   * @param jobID the id of the job that the adapter wants to start
+   * @param visibility visibility of the job
+   * @return TestSession
+   */
+  @Signal(async=false)
+  public abstract TestSession trigger(Long jobID, Visibility visibility);
 }

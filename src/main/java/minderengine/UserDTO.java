@@ -15,10 +15,10 @@ public class UserDTO {
 	/**
 	 * Constructor of UserTDO object
 	 * 
-	 * @param userName
-	 * @param name
-	 * @param surname
-	 * @param eMail
+	 * @param userName:the username of the user
+	 * @param name: the name of the user
+	 * @param surname: the surname of the user
+	 * @param eMail: the email of the user
 	 */
 	public UserDTO(String userName, String name, String surname, String eMail) {
 		this.userName = userName;
