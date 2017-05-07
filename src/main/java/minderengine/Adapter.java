@@ -3,7 +3,7 @@ package minderengine;
 
 
 /**
- * The base wrapper class of minder-common.
+ * The base adapter class of minder-common.
  * <br>
  * TDs will extend this class in order to integrate their systems to the minder
  * environment.
@@ -16,7 +16,7 @@ package minderengine;
  * @author yerlibilgin
  */
 
-public abstract class Wrapper {
+public abstract class Adapter {
 
   /**
    * The possible exception that might have occurred during a signal call,
@@ -31,13 +31,13 @@ public abstract class Wrapper {
   private String defaultSession;
 
   /**
-   * Constructor of the base wrapper class
+   * Constructor of the base adapter class
    */
-  public Wrapper() {
+  public Adapter() {
   }
 
   /**
-   * Overridden in case of need to start up a wrapped object prior to a test
+   * Overridden in case of need to start up a adapted object prior to a test
    */
   public void startTest() {
 
@@ -146,12 +146,12 @@ public abstract class Wrapper {
     this.signalFailedException.remove();
     return exception;
   }
-  
+
   /**
    * Provides gitb specific informations of the gitb compatible wrapper.
    * If wrapper is not gitb compatible, it will not necessary to return any information.
    * <br>
-   * 
+   *
    * The default implementation returns null, and the clients don't have to implement this method.
    * @return gitb endpont data transfer object
    */

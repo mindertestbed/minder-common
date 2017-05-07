@@ -1,7 +1,6 @@
 package minderengine;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
@@ -16,14 +15,14 @@ public class MinderUtils {
   /**
    * Associates a wrapper to a SignalHandler
    *
-   * @param clazz         The wrapper class that is to be associated
+   * @param clazz         The adapter class that is to be associated
    * @param signalHandler The signal handler to be associated to the wrapper
    * @return the wrapper associated to the desired signal handler.
    */
-  public static Wrapper createWrapper(Class<Wrapper> clazz,
+  public static Adapter createAdapter(Class<Adapter> clazz,
                                       ISignalHandler signalHandler) {
 
-    return (Wrapper) Enhancer.create(clazz, new Interceptor(signalHandler));
+    return (Adapter) Enhancer.create(clazz, new Interceptor(signalHandler));
   }
 
   /**
