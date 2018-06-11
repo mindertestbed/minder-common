@@ -18,7 +18,7 @@ public interface IMinderClient {
   public Object callSlot(TestSession session, String slotName, Object[] args);
 
   /**
-   * The client method for starting a test on the wrapper side.
+   * The client method for starting a test on the adapter side.
    * The session id is used for
    *
    * @param startTestObject the session id of the test designer user that started this test.

@@ -5,9 +5,9 @@ import java.util.Set;
 /**
  * Represents the xoolan server interface, used for communicating with the
  * minder server
- * 
+ *
  * @author yerlibilgin
- * 
+ *
  */
 public interface IMinderServer {
 
@@ -16,15 +16,15 @@ public interface IMinderServer {
 	 * information about its services
 	 *
 	 * @param identifier
-	 * Wrapper|Version
+	 * Adapter|Version
 	 * @param methodSet
-	 *            the set of signals and slots provided by the underlying wrapper.
+	 *            the set of signals and slots provided by the underlying adapter.
 	 */
 	public void hello(AdapterIdentifier identifier, Set<MethodContainer> methodSet);
 
 	/**
 	 * Method to get information about the test designer that runs the tests
-	 * 
+	 *
 	 * @param session
 	 * @return
 	 */

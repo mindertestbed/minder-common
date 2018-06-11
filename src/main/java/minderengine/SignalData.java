@@ -21,7 +21,7 @@ public class SignalData implements Serializable, Comparable<SignalData> {
    * that it has been created.
    * <br>
    * It is important to note that this value does not have to be unique for different minder-clients.
-   * Because the server will differentiate between signal instances of that kind using the uid of the wrapper.
+   * Because the server will differentiate between signal instances of that kind using the uid of the adapter.
    */
   public final long seqNum;
 

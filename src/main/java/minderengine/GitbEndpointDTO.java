@@ -4,21 +4,21 @@ import java.util.List;
 
 
 /**
- * 
- * A data transfer object that wraps endpoint information about the gitb compatible minder wrapper.
+ *
+ * A data transfer object that wraps endpoint information about the gitb compatible minder adapter.
  * Detailed explanations is defined in gitb specification.
- * 
+ *
  * @author yerlibilgin
  */
 public class GitbEndpointDTO {
-	
+
 	private String name;
 	private String description;
 	private List<GitbParameter> params;
-	
+
 	/**
 	 * Constructor of GitbEndpointDTO object
-	 * 
+	 *
 	 * @param name
 	 * @param description
 	 * @param params
@@ -28,11 +28,11 @@ public class GitbEndpointDTO {
 		this.description = description;
 		this.params = params;
 	}
-	
+
 	public GitbEndpointDTO() {
-		
+
 	}
-	
+
 	/**
 	 * Getter method of name variable
 	 *
@@ -44,7 +44,7 @@ public class GitbEndpointDTO {
 
 	/**
 	 * Setter method of name variable
-	 * 
+	 *
 	 * @param name
 	 */
 	public void setName(String name) {
@@ -62,7 +62,7 @@ public class GitbEndpointDTO {
 
 	/**
 	 * Setter method of description variable
-	 * 
+	 *
 	 * @param description
 	 */
 	public void setDescription(String description) {
@@ -80,13 +80,13 @@ public class GitbEndpointDTO {
 
 	/**
 	 * Setter method of key-value parameter list variable
-	 * 
+	 *
 	 * @param params
 	 */
 	public void setParams(List<GitbParameter> params) {
 		this.params = params;
 	}
 
-	
-	
+
+
 }

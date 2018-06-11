@@ -4,7 +4,7 @@ package minderengine;
  * Created by yerlibilgin on 24/07/15.
  *
  * This is used for reporting errors instead of regular signal calls.
- * please refer to Wrapper.beginReportSignalError
+ * please refer to Adapter.beginReportSignalError
  *
  * @since 0.0.8
  */

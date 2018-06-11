@@ -1,10 +1,10 @@
 package minderengine;
 
 /**
- * 
- * A gitb endpoint configuration parameter that is owned one or more by wrapper.
+ *
+ * A gitb endpoint configuration parameter that is owned one or more by adapter.
  * Detailed explanations is defined in gitb specification.
- * 
+ *
  * @author yerlibilgin
  */
 public class GitbParameter{
@@ -14,10 +14,10 @@ public class GitbParameter{
 	private GitbUsageEnumeration use;
 	private GitbConfigurationType kind;
 	private String description;
-	
+
 	/**
 	 * Constructor of GitbParameter object
-	 * 
+	 *
 	 * @param name
 	 * @param value
 	 * @param use
@@ -33,7 +33,7 @@ public class GitbParameter{
 		this.kind = kind;
 		this.description = description;
 	}
-	
+
 	public GitbParameter() {
 		super();
 	}
@@ -49,7 +49,7 @@ public class GitbParameter{
 
 	/**
 	 * Setter method of name variable
-	 * 
+	 *
 	 * @param name
 	 */
 	public void setName(String name) {
@@ -67,7 +67,7 @@ public class GitbParameter{
 
 	/**
 	 * Setter method of value variable
-	 * 
+	 *
 	 * @param value
 	 */
 	public void setValue(String value) {
@@ -85,7 +85,7 @@ public class GitbParameter{
 
 	/**
 	 * Setter method of use variable
-	 * 
+	 *
 	 * @param use
 	 */
 	public void setUse(GitbUsageEnumeration use) {
@@ -103,7 +103,7 @@ public class GitbParameter{
 
 	/**
 	 * Setter method of kind variable
-	 * 
+	 *
 	 * @param kind
 	 */
 	public void setKind(GitbConfigurationType kind) {
@@ -121,13 +121,13 @@ public class GitbParameter{
 
 	/**
 	 * Setter method of description variable
-	 * 
+	 *
 	 * @param description
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
+
+
 
 }

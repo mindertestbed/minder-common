@@ -7,21 +7,20 @@ import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
 /**
- * Class for association of a wrapper with a signal handler.
+ * Class for association of a adapter with a signal handler.
  *
  * @author yerlibilgin
  */
 public class MinderUtils {
   /**
-   * Associates a wrapper to a SignalHandler
+   * Associates a adapter to a SignalHandler
    *
    * @param clazz         The adapter class that is to be associated
-   * @param signalHandler The signal handler to be associated to the wrapper
-   * @return the wrapper associated to the desired signal handler.
+   * @param signalHandler The signal handler to be associated to the adapter
+   * @return the adapter associated to the desired signal handler.
    */
   public static Adapter createAdapter(Class<Adapter> clazz,
                                       ISignalHandler signalHandler) {
-
     return (Adapter) Enhancer.create(clazz, new Interceptor(signalHandler));
   }
 

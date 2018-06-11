@@ -98,10 +98,10 @@ public abstract class Adapter {
   }
 
   /**
-   * The wrappers that implement this method are responsible to report
+   * The adapters that implement this method are responsible to report
    * the name(s) of the actual System(s) that are being tested. This is used
-   * for reporting. For example, the wrapper name might be
-   * IBM_B2BWrapper, but the actual SUT name might be "IBM B2B Advanced Communications Gateway"
+   * for reporting. For example, the adapter name might be
+   * IBM_B2BAdapter, but the actual SUT name might be "IBM B2B Advanced Communications Gateway"
    * @return The identifier of the actual system under test.
    * @since 0.4.2
    */
@@ -148,8 +148,8 @@ public abstract class Adapter {
   }
 
   /**
-   * Provides gitb specific informations of the gitb compatible wrapper.
-   * If wrapper is not gitb compatible, it will not necessary to return any information.
+   * Provides gitb specific informations of the gitb compatible adapter.
+   * If adapter is not gitb compatible, it will not necessary to return any information.
    * <br>
    *
    * The default implementation returns null, and the clients don't have to implement this method.
