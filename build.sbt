@@ -18,6 +18,7 @@ crossPaths := false
 
 libraryDependencies ++= Seq(
   "cglib" % "cglib" % "3.1",
+  "org.slf4j" % "slf4j-api" % "1.7.25",
   "com.typesafe.play" %% "play-specs2" % "2.6.9" % "test"
 )
 
